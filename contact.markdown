@@ -1,6 +1,11 @@
 ---
 title: Contact
 ---
+Takayuki Muranushi
 
-I live in a small hut on top of The Lambda Mountain, East Kyoto, and
-would not like to be contacted.
+RIKEN Advanced Institute for Computational Science
+7-1-26, Minatojima-minami-machi, Chuo-ku, Kobe, Hyogo, 650-0047, Japan
+
+
+
+
