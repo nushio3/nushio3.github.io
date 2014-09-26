@@ -1,3 +1,4 @@
+#!/usr/bin/env runhaskell
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
@@ -7,6 +8,9 @@ import           Hakyll
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
+    match "images/2014-09-13/*" $ do
+        route   idRoute
+        compile copyFileCompiler
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
