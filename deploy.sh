@@ -35,8 +35,8 @@ deploy_directory=_site
 deploy_branch=master
 
 #if no user identity is already set in the current git environment, use this:
-default_username=deploy.sh
-default_email=
+default_username=nushio3
+default_email=muranushi@gmail.com
 
 #repository to deploy to. must be readable and writable.
 repo=origin
