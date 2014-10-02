@@ -94,6 +94,9 @@ git --work-tree "$deploy_directory" reset --mixed --quiet
 
 git --work-tree "$deploy_directory" add --all
 
+git pull
+
+
 set +o errexit
 diff=$(git --work-tree "$deploy_directory" diff --exit-code --quiet HEAD)$?
 set -o errexit
