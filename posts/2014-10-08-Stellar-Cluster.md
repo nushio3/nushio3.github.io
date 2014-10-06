@@ -28,6 +28,5 @@ Globular Cluster
 Globular clusters are formed in the process of galaxy formation. In
 other words, globular clusters are smaller siblings of galaxies. 
 
-Globular clusters have spherically symmetric distribution about
-galactic gravitational center.
+Globular clusters have spherically symmetric distribution about galactic gravitational center.
 
