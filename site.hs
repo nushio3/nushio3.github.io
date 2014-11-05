@@ -19,6 +19,16 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
+    match "posts/2014-10-09-LaTeX2HTML/post/img*.png" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+    match "posts/2014-10-09-LaTeX2HTML/post/post.pdf" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+
+
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
@@ -38,10 +48,21 @@ main = hakyll $ do
             >>= linkThumbnail
             >>= relativizeUrls
 
+
+    match "posts/2014-10-09-LaTeX2HTML/post/post.html" $ do
+        route idRoute
+        compile $ do
+            getResourceBody
+            >>= loadAndApplyTemplate "templates/post.html" postCtx
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= linkThumbnail
+            >>= relativizeUrls
+
+
     create ["archive.html"] $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*.md"
+            posts <- recentFirst =<< loadAll postPattern
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Archives"            `mappend`
@@ -56,7 +77,7 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll postPattern
+            posts <- recentFirst =<< loadAll (postPattern .||. "posts/2014-10-09-LaTeX2HTML/post/post.html")
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Home"                `mappend`
@@ -72,7 +93,8 @@ main = hakyll $ do
 
 --------------------------------------------------------------------------------
 postPattern :: Pattern
-postPattern = "posts/*.md" .||. "posts/*/post.md" .||. "posts/**.md"
+postPattern = "posts/*.md" .||. "posts/*/post.md"
+
 
 postCtx :: Context String
 postCtx =

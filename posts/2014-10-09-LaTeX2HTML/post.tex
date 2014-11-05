@@ -1,11 +1,40 @@
 \documentclass{article}
+\usepackage{ifpdf}
+\usepackage{html}
+\usepackage{hyperref}
+
+\ifpdf\else
+  \def\href#1#2{\htmladdnormallink{#2}{#1}}
+\fi
+\title{Using \LaTeX~with Hakyll}
+\author{Takayuki Muranushi}
+
 \begin{document}
 
-This is \LaTeX. You can use it in combination with Haskell DSLs such as {\tt authoring}
-and Paraiso
-\cite{Muranushi2012Paraiso} .
+\maketitle
+
+This HTML is generated from \LaTeX~source via {\tt latex2html}
+and then embedded into Hakyll-hosted blog. The use of LaTeX will allow us the use of
+complex expressions e.g. 
+
+\begin{eqnarray}
+\frac{\partial{\vec v}}{\partial t} &=& \vec \nabla s
+\end{eqnarray}
+
+This attempt seems to basically working although there are few
+glitches (like the duplicated title you can see.) Fixing these should be some 
+cumbersome script work but should not be too hard.
+
+
+
+I am further trying to use this technology in combination with Haskell
+DSLs such as \href{http://hackage.haskell.org/package/authoring}{\tt
+  authoring} and units \cite{muranushi2014experience} , to write
+physical discussions in Haskell and LaTeX.
 
 \bibliographystyle{abbrv}
 \bibliography{references}
+
+The content of this page is also availabe as a pdf document: \href{./post.pdf}{Using \LaTeX~with Hakyll}.
 
 \end{document}
