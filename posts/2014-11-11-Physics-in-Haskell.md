@@ -14,14 +14,15 @@ And following advices and practices by [Kenko](../about.html),
 [Daisuke](http://www.slideshare.net/pfi/ss-40627009), and 
 [Microsoft](https://github.com/Microsoft) (who made Visual Studio an open software,) I decided to make the whole system open to the public eyeballs for feedbacks!
 
+[The source code for the paper](https://github.com/nushio3/lightning/tree/master/paper7) is publically available.
 
 Related Tools
 ====
 
-- units
-- authoring
-- citation-resolve
-- HaTeX
+- [units](http://hackage.haskell.org/package/units), a package for type-level dimensional analysis in Haskell programs. See also [the slides](http://www.slideshare.net/nushio/haskell-2014-typechecking-polymorphic-units-for-astrophysics-research-in-haskell) and [the paper](http://www.cis.upenn.edu/~eir/papers/2014/units/units.pdf) that describe the "Physics in Haskell" experience from the Haskell's side.
+- [authoring](http://hackage.haskell.org/package/authoring), a package for writing papers in Haskell. In addition to LaTeX combinators, it has built-in mechanisms for managing labels for equations, figures and tables, and tracking citations.
+- [citation-resolve](http://hackage.haskell.org/package/citation-resolve) is a package for resolving bibliographic references; it recognizes DOIs, ISBNs, arXiv IDs and generates proper citations.
+
 
 
 Regrets, or Future Challenges
