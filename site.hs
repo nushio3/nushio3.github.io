@@ -101,32 +101,31 @@ postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
 
-
 linkThumbnail :: Item String -> Compiler (Item String)
 linkThumbnail item = do
   fnDir <- getResourceFilePath
   let
     inner :: T.Text -> T.Text
     inner =  T.unlines . map convertJPG . T.lines
-    
-    fnTxt :: T.Text
-    fnTxt = T.replace "./posts/" "/images/" $ 
-            T.replace ".md//" "" $ 
-            (T.pack fnDir <> "//") 
-      
-    
-    convertJPG :: T.Text -> T.Text
-    convertJPG lin 
-      | not (T.isSuffixOf ".JPG</p>" lin) = lin
-      | otherwise = 
-          T.replace "FNDIR" fnTxt $
-          T.replace "FNBODY" (fnBodyOf lin) tmpl          
 
-    fnBodyOf lin = 
+    fnTxt :: T.Text
+    fnTxt = T.replace "./posts/" "/images/" $
+            T.replace ".md//" "" $
+            (T.pack fnDir <> "//")
+
+
+    convertJPG :: T.Text -> T.Text
+    convertJPG lin
+      | not (T.isSuffixOf ".JPG</p>" lin) = lin
+      | otherwise =
+          T.replace "FNDIR" fnTxt $
+          T.replace "FNBODY" (fnBodyOf lin) tmpl
+
+    fnBodyOf lin =
       T.replace "<p>" "" $ T.replace ".JPG</p>" ""  lin
-  
+
     tmpl :: T.Text
     tmpl = "<center><a  href=\"FNDIR/FNBODY.JPG\" target=\"_blank\"><img src=\"FNDIR/FNBODY-th.png\" style=\"float: center; margin: 10px;\" /></a></center>\n"
 
-  
+
   return $ fmap (T.unpack . inner . T.pack) item
