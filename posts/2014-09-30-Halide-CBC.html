@@ -7,16 +7,20 @@
         <link rel="stylesheet" type="text/css" href="../css/default.css" />
     </head>
     <body>
-        <div id="header">
-            <div id="logo">
-                <a href="../">On Perseverance In Youth</a>
-            </div>
-            <div id="navigation">
-                <a href="../index.html">Home</a>
-                <a href="../about.html">About</a>
-                <a href="../contact.html">Contact</a>
-                <a href="../archive.html">Archive</a>
-            </div>
+      <div id="header">
+        <p>
+          <div id="logo">
+            <a href="../">On Perseverance In Youth</a>
+          </div>
+        </p>
+        <p>
+          <div id="navigation">
+            <a href="../index.html">Home</a>
+            <a href="../publications.html">Publications</a>
+            <a href="../about.html">About</a>
+            <a href="../archive.html">Archive</a>
+          </div>
+        </p>
         </div>
 
         <div id="content">
@@ -35,7 +39,7 @@
 <li><a href="https://lists.csail.mit.edu/pipermail/halide-dev/2014-June/000902.html">My response</a></li>
 </ul>
 <p>Now is the time for testing! The following code</p>
-<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;Halide.h&gt;</span>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;Halide.h&gt;</span>
 <span class="ot">#include &lt;stdio.h&gt;</span>
 
 <span class="dt">const</span> <span class="dt">int</span> NX=<span class="dv">4</span>, NY=<span class="dv">4</span>;
@@ -59,7 +63,7 @@
     }
     printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
   }
-}</code></pre>
+}</code></pre></div>
 <p>produces the following output.</p>
 <pre><code>a b c d d c b a a b c d d c b a a b c d 
 e f g h h g f e e f g h h g f e e f g h 
