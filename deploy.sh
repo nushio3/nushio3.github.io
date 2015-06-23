@@ -1,22 +1,22 @@
 # https://github.com/X1011/git-directory-deploy
 # BSD 3-Clause License:
-# 
+#
 # Copyright Daniel Smith
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without modification,
 # are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice, this
 #   list of conditions and the following disclaimer in the documentation and/or
 #   other materials provided with the distribution.
-# 
+#
 #   The names of the contributors may not be used to endorse or promote products
 #   derived from this software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -89,12 +89,12 @@ enable_expanded_output
 #make deploy_branch the current branch
 git symbolic-ref HEAD refs/heads/$deploy_branch
 
-#put the previously committed contents of deploy_branch branch into the index 
+#put the previously committed contents of deploy_branch branch into the index
 git --work-tree "$deploy_directory" reset --mixed --quiet
 
 git --work-tree "$deploy_directory" add --all
 
-git pull
+git pull origin master
 
 
 set +o errexit
@@ -106,7 +106,7 @@ case $diff in
 		set_user_id
 		git --work-tree "$deploy_directory" commit -m \
 			"publish: $commit_title"$'\n\n'"generated from commit $commit_hash"
-		
+
 		disable_expanded_output
 		#--quiet is important here to avoid outputting the repo URL, which may contain a secret token
 		git push --quiet $repo $deploy_branch
