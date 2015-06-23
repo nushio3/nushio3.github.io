@@ -19,6 +19,10 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
+    match "publications/*" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match "posts/2014-10-09-LaTeX2HTML/post/img*.png" $ do
         route   idRoute
         compile copyFileCompiler

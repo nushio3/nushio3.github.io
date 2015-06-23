@@ -16,8 +16,12 @@ Then type `./site.hs help` to see for any updates in `hakyll` .
 The top-page of the website is `_site/index.html` . Open it in your favorite browser, and run `./site.hs watch`
 which will monitor for any change and recompile.
 
+To Deploy
+---
+Run `./deploy.sh`
 
-The variation of
+
+The variation of page generation methods
 ----
 
 For future compatibility.
