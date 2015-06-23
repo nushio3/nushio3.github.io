@@ -18,7 +18,7 @@ which will monitor for any change and recompile.
 
 To Deploy
 ---
-Run `./deploy.sh`
+Run `./deploy.sh -v` .
 
 
 The variation of page generation methods
