@@ -8,3 +8,4 @@ post/index.html: post.tex references.bib Makefile
 	pdflatex post.tex
 	cat metadata.md dist/post.html > dist/post.html.2
 	mv dist/post.html.2 dist/post.html
+	cp post.pdf dist/

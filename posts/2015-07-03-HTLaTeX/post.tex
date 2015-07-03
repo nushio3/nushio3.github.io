@@ -1,41 +1,51 @@
 \documentclass{article}
-\usepackage{ifpdf}
 \usepackage{hyperref}
-% \usepackage{html}
+\usepackage{url}
+\usepackage{natbib}
 
-\ifpdf\else
-  \def\href#1#2{\htmladdnormallink{#2}{#1}}
-\fi
-\title{Using \LaTeX~with Hakyll}
+\title{Using {\LaTeX} with Hakyll: 2}
 \author{Takayuki Muranushi}
 
 \begin{document}
 
 \maketitle
 
-This HTML is generated from \LaTeX~source via {\tt latex2html}
+This HTML is generated from {\LaTeX} source via {\tt htlatex}
 and then embedded into Hakyll-hosted blog. The use of LaTeX will allow us the use of
-complex expressions e.g. $G_{\mu,\nu}=\frac{8\pi G}{c^4}T_{\mu,\nu}$ and
+complex expressions e.g. $G_{\mu,\nu}=\frac{8\pi G}{c^4}T_{\mu,\nu}$ and like Equation (\ref{eq:1}).
 
 \begin{eqnarray}
-\frac{\partial{\vec v}}{\partial t} &=& \vec \nabla s
+\frac{\partial{\vec v}}{\partial t} &=& \vec \nabla s \label{eq:1}
 \end{eqnarray}
 
-This attempt seems to basically working although there are few
-glitches (like the duplicated title you can see.) Fixing these should be some
-cumbersome script work but should not be too hard.
 
+
+This attempt seems to basically working, and the few
+glitches of
+% note: I think it's okay to use the absolute URL, since this url also goes into the pdf file.
+\href{http://nushio3.github.io/posts/2014-10-09-LaTeX2HTML/post/post.html}{the previous attempt},
+like the duplicated title is no more there. Fixing these was easy because
+all I had to do is to add some Markdown metadata directly to HTML.
+
+The sad thing is the poor quality of the rendering of the math equations. Some day I'll try out the
+\href{http://tex.stackexchange.com/questions/44486/pixel-perfect-vertical-alignment-of-image-rendered-tex-snippets}{technique by Todd}.
 
 
 I am further trying to use this technology in combination with Haskell
 DSLs such as
-\hyperlink{http://hackage.haskell.org/package/authoring}{authoring}
-and units \cite{muranushi2014experience} , to write
+\href{http://hackage.haskell.org/package/authoring}{authoring},
+units \citep{muranushi2014experience} ,
+units-of-measure plugin \citep{gundry2015typechecker}
+in order to write
 physical discussions in Haskell and LaTeX.
 
-\bibliographystyle{abbrv}
+\bibliographystyle{abbrvnat}
+%\bibliographystyle{siam}
+%\bibliographystyle{plainnat}
+%\bibliographystyle{plain}
 \bibliography{references}
 
-The content of this page is also availabe as a pdf document: Using \LaTeX~with Hakyll.
+The content of this page is also availabe as a pdf document:
+\href{http://nushio3.github.io/posts/2015-07-03-HTLaTeX/dist/post.pdf}{Using {\LaTeX} with Hakyll: 2}.
 
 \end{document}

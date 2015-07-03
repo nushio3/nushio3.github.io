@@ -31,6 +31,16 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
+    match "posts/*/dist/*.png" $ do
+        route   idRoute
+        compile copyFileCompiler
+    match "posts/*/dist/*.css" $ do
+        route   idRoute
+        compile copyFileCompiler
+    match "posts/*/dist/*.pdf" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
@@ -41,7 +51,7 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match postPattern $ do
+    match mdPostPattern $ do
         route $ setExtension "html"
         compile $ do
             pandocCompiler
@@ -60,11 +70,20 @@ main = hakyll $ do
             >>= linkThumbnail
             >>= relativizeUrls
 
+    match htmlPostPattern $ do
+        route idRoute
+        compile $ do
+            --pandocCompiler
+            getResourceBody
+            >>= loadAndApplyTemplate "templates/default.html" (constField "title" "An HTML Post" <> postCtx)
+            >>= linkThumbnail
+            >>= relativizeUrls
+
 
     create ["archive.html"] $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll postPattern
+            posts <- recentFirst =<< loadAll (mdPostPattern .||. htmlPostPattern)
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Archives"            `mappend`
@@ -79,7 +98,7 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll (postPattern .||. "posts/2014-10-09-LaTeX2HTML/post/post.html")
+            posts <- recentFirst =<< loadAll (mdPostPattern .||. htmlPostPattern .||. "posts/2014-10-09-LaTeX2HTML/post/post.html")
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Home"                `mappend`
@@ -94,8 +113,11 @@ main = hakyll $ do
 
 
 --------------------------------------------------------------------------------
-postPattern :: Pattern
-postPattern = "posts/*.md" .||. "posts/*/post.md"
+mdPostPattern :: Pattern
+mdPostPattern = "posts/*.md" .||. "posts/*/post.md"
+
+htmlPostPattern :: Pattern
+htmlPostPattern = "posts/*/dist/post.html"
 
 
 postCtx :: Context String
