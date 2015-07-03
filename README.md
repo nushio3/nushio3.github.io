@@ -24,4 +24,6 @@ Run `./deploy.sh -v` .
 The variation of page generation methods
 ----
 
-For future compatibility.
+For future compatibility, I decided  to add the final generated files to the source repository
+(which is normally considered a bad idea.) This is because I'm afraid the program that generated the page might
+become obsolete and stop working one day.
