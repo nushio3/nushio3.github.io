@@ -3,7 +3,13 @@
 \usepackage{url}
 \usepackage{natbib}
 
-\title{Publications}
+% c.f. http://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib?lq=1
+
+% create custom bst by
+%  latex `kpsewhich makebst.tex`
+
+
+\title{Publications 2}
 \author{Takayuki Muranushi}
 
 \begin{document}
@@ -12,7 +18,7 @@
 
 \nocite{*}
 
-\bibliographystyle{abbrvnat}
+\bibliographystyle{custom}
 \bibliography{publications}
 
 
