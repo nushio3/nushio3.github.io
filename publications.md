@@ -27,20 +27,11 @@ K Okabe, T Muranushi
 Haskell Symposium, collocated with International Conference on Functional ...
 	 	(2014)
 
-- Development of space weather prediction algorithm using big data analysis
-Y Hada, T Muranushi, T Shibayama, H Isobe, S Nemoto, K Shibata
-Japan Geoscience Union Meeting 2014
-	 	(2014)
 
 - Remnant massive neutron stars of binary neutron star mergers: Evolution process and gravitational waveform
 K Hotokezaka, K Kiuchi, K Kyutoku, T Muranushi, Y Sekiguchi, M Shibata, ...
 Physical Review D 88 (4), 044026
 		(2013)
-
-- Lightning in Protoplanetary Disks
-T Muranushi
-Kyoto University
-	 	(2013)
 
 - Interdependence of Electric Discharge and Magnetorotational Instability in Protoplanetary Disks
 T Muranushi, S Okuzumi, S Inutsuka
@@ -62,24 +53,29 @@ T Muranushi
 Monthly Notices of the Royal Astronomical Society 401 (4), 2641-2664
 		(2010)
 
-- Proto‐planetary Nebulae Struck by Lightning? A Charge Separation Study of Ice Dust Grains And its Effect on Dust Growth
-T Muranushi, T Tomiyasu
-Exoplanets and Disks: Their Formation and Diversity: Proceedings of the ...
-	 	(2009)
-
 - Direct Simulations of Particle Acceleration in a Fluctuating Electromagnetic Field Across a Shock
 T Muranushi, S Inutsuka
-The Astrophysical Journal Letters 691 (1), L24
+The Astrophysical Journal Letters 691 (1), L24 (2009)
 
 
 Talks
 =====
+- Development of space weather prediction algorithm using big data analysis
+Y Hada, T Muranushi, T Shibayama, H Isobe, S Nemoto, K Shibata
+Japan Geoscience Union Meeting 2014
+	 	(2014)
+
+
+- Proto‐planetary Nebulae Struck by Lightning? A Charge Separation Study of Ice Dust Grains And its Effect on Dust Growth
+T Muranushi, T Tomiyasu
+Exoplanets and Disks: Their Formation and Diversity
+	 	(2009)
 
 
 
 Dissertations
 ===========
 
-- Ph.D Dissertation. Lightning in Protoplanetary Disks. [download](publications/Lightning_in_Protoplanetary_Disks.pdf)
+- Ph.D Dissertation. Lightning in Protoplanetary Disks. [pdf](publications/Lightning_in_Protoplanetary_Disks.pdf)
 
-- Masters Thesis. Computer Simulation of Particle Acceleration under Turbulence and Shock Structure. [download](publications/ksk.pdf)
+- Masters Thesis. Computer Simulation of Particle Acceleration under Turbulence and Shock Structure. [pdf](publications/ksk.pdf)
