@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Thinking Physically in Haskell - On Perseverance In Youth</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+    </head>
+    <body>
+      <div id="header">
+        <p>
+          <div id="logo">
+            <a href="../">On Perseverance In Youth</a>
+          </div>
+        </p>
+        <p>
+          <div id="navigation">
+            <a href="../index.html">Home</a>
+            <a href="../publications.html">Publications</a>
+            <a href="../about.html">About</a>
+            <a href="../archive.html">Archive</a>
+          </div>
+        </p>
+        </div>
+
+        <div id="content">
+            <h1> Thinking Physically in Haskell  </h1>
+
+<div class="info">
+    Posted on November 11, 2014
+    
+        by Takayuki Muranushi
+    
+</div>
+
+<p>Today I have submitted a paper to Astrophysical Journal. What is so special about this paper is that it is written in Haskell.</p>
+<p>That does not only mean that Haskell generates the LaTeX source code for the paper. Chemistry and physics data the paper is based on are presented together in machine-readable forms. The physical formulae and models used in the paper are encoded as Haskell functions. Physical reasonings are functional applications of such formulae. I paid effort to encode most of the physical reasoning of this paper in programming languages, mainly in Haskell, also some C/C++ and Python. Moreover, Haskell parts are type-checked for correctness of quantity calculus. In this paper are no adding of meters to seconds, or meters to light-years; no mixing-ups of radiant flux with radiance, irradiance, spectral radiance, and spectral irradiance.</p>
+<p>As a result, the paper demonstrates redefined level of reproducibility and objectivity. Anyone — even unintellectual silicate circuits — can reproduce the research by just saying <code>make paper</code>. (With dependencies installed. At least, that is what I aimed for in this paper.)</p>
+<p>And following advices and practices by <a href="../about.html">Kenko</a>, <a href="http://www.slideshare.net/pfi/ss-40627009">Daisuke</a>, and <a href="https://github.com/Microsoft">Microsoft</a> (who made Visual Studio an open software,) I decided to make the whole system open to the public eyeballs for feedbacks!</p>
+<p><a href="https://github.com/nushio3/lightning/tree/master/paper7">The source code for the paper</a> is publically available.</p>
+<h1 id="related-tools">Related Tools</h1>
+<ul>
+<li><a href="http://hackage.haskell.org/package/units">units</a>, a package for type-level dimensional analysis in Haskell programs. See also <a href="http://www.slideshare.net/nushio/haskell-2014-typechecking-polymorphic-units-for-astrophysics-research-in-haskell">the slides</a> and <a href="http://www.cis.upenn.edu/~eir/papers/2014/units/units.pdf">the paper</a> that describe the “Physics in Haskell” experience from the Haskell’s side.</li>
+<li><a href="http://hackage.haskell.org/package/authoring">authoring</a>, a package for writing papers in Haskell. In addition to LaTeX combinators, it has built-in mechanisms for managing labels for equations, figures and tables, and tracking citations.</li>
+<li><a href="http://hackage.haskell.org/package/citation-resolve">citation-resolve</a> is a package for resolving bibliographic references; it recognizes DOIs, ISBNs, arXiv IDs and generates proper citations.</li>
+</ul>
+<h1 id="regrets-or-future-challenges">Regrets, or Future Challenges</h1>
+<h2 id="remove-lava-flows">Remove Lava Flows</h2>
+<p>As is inevitable with dog-fooding development cycle, some parts of the source code are written in the old style. For example, some parts of the paper English are written directly as HaTeX syntax nodes, because they are written before <code>authoring</code> quasi-quoters were available. Also, overall style of physics encoding reflects the legacy of <code>unittyped</code> .</p>
+<p>As a result, paper exhibits several archeological layers of the development. I hope the subsequent papers will gradually become much free of legacies as we bring the “writing in Haskell” style to well-practiced convention. Or will the “writing with computer” style grow indifinitely?</p>
+<h2 id="unite-english-texts-into-one-file">Unite English Texts into One File</h2>
+<p>The natural language components of the paper is scattered among the tens of Haskell source codes. For example, English sentences that describe Hayashi’s protoplanetary disk model are right next to the program that encodes Hayashi model equations. Initially, I thought it was the right thing to do, since documentation of a program must sit close to the implementation. However, this later turned out to be a bad design choice. It became harder and harder to follow the logic; “Where is the next section? In which file?” Also, as I repeatedly read the printout, or passed it to people for feedback, I wanted to fix the paper. When I apply the fix to the source, it was a hard job to locate where the particular English sentence is coming from.</p>
+<p>In other words, English component of the paper is a spaghetti code that jumps randomly among Haskell source files.</p>
+<p>A paper is not a pile of text pasted together. Rather, a good paper must exhibit a good flow of logic. For the next paper, I’m thinking of the opposite approach; rather than embedding English into Haskell source codes as documentations, a single English document should describe the project, to which Haskell values are embedded. The new <code>inputQ</code> quasi-quoter of the latest <code>authoring</code> package will do the job.</p>
+<h2 id="units-typed-foreign-function-interface">Units-typed Foreign Function Interface</h2>
+<p>Although the Haskell parts are protected from unit errors by use of <code>units</code> library, C/C++ and Python parts are not. I have been afraid of it, but I did experienced an error from it. I call <a href="http://www.nbi.dk/~brinch/lime.php">LIME</a> software for radiative transfer simulations. For a while I had been giving LIME line velocities in <code>km/s</code> where it expects <code>m/s</code>. As a result LIME-generated images showed virtually no signals because the given velocities are 1000 times slower than they should be.</p>
+<p>More proper approach here should have been to define a Haskell library that wraps LIME C code, and type the interface functions with appropriate units.</p>
+<h1 id="conclusions">Conclusions</h1>
+<p>In the course of the development, many times I had to fight the urges to restart from scratch, or clean up the old codes. And I believe I made the right choice, since had I obeyed those urges, the paper would have never been completed. The paper is not a completed example of a “physics paper in Haskell”. Rather, it represents our current achievement. I make it publically available knowing that it is imperfect, in order to achieve some accomplishment for great good.</p>
+
+        </div>
+        <div id="footer">
+            Feedbacks and criticisms are always welcome as they leads to growth; <a href="https://github.com/nushio3/nushio3.github.io/issues">submit</a><p>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </div>
+    </body>
+</html>

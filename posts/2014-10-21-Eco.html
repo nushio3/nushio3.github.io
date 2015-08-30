@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Review of Eco, or a language composition editor - On Perseverance In Youth</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+    </head>
+    <body>
+      <div id="header">
+        <p>
+          <div id="logo">
+            <a href="../">On Perseverance In Youth</a>
+          </div>
+        </p>
+        <p>
+          <div id="navigation">
+            <a href="../index.html">Home</a>
+            <a href="../publications.html">Publications</a>
+            <a href="../about.html">About</a>
+            <a href="../archive.html">Archive</a>
+          </div>
+        </p>
+        </div>
+
+        <div id="content">
+            <h1> Review of Eco, or a language composition editor  </h1>
+
+<div class="info">
+    Posted on October 21, 2014
+    
+        by Takayuki Muranushi
+    
+</div>
+
+<p>The absolute barriers that separate different programming languages — is being neutralized. I witnessed, for the first time since the collapse of the Tower of Babel, multiple language fused together to realize what were impossible by individuals.</p>
+<p>I’ve been to <a href="http://2014.splashcon.org/">SPLASH 2014</a> conference, and learned many things. To pick the most interesting talk to me, it was <a href="http://soft-dev.org/">Language Composition</a>. Here’s <a href="http://soft-dev.org/talks/2014/splash.pdf">the slides</a> and here’s <a href="http://soft-dev.org/pubs/html/diekmann_tratt__eco_a_language_composition_editor/">their paper about the editor</a>.</p>
+<p><a href="http://soft-dev.org/talks/2014/lille.pdf">The demo</a> above shows an HTML, with Python program embedded here and there, which also hosts some SQL query strings. The whole program is interpreted as a python program that reads from a database and renders some HTML.</p>
+<p><a href="http://soft-dev.org/talks/2014/vmm.pdf">Another demo</a> showed a game, a variant of tic-tac-toe, played by Humans or by AIs. The game AIs are implemented as search-algorithms in Prolog, and the GUI is in Python.</p>
+<p>Yet another demo showed a fused Python-PHP program, where Python parts can refer to PHP variables by their name, and vice versa. We need explicit conversions for some cases; for example, PHP arrays are internally represented as hash maps, so when imported to Python they show up as hash maps. Explicit method calls are needed to change them into Python arrays. But they are details.</p>
+<h1 id="how-it-works">How it works</h1>
+<p>What is so super about language composition? Well, imagine text files that include multiple language pieces. Sometimes we will be able to sense different language parts using our built-in biological neural networks, but it is not hard to imagine ambiguous cases. Situation is worse for compilers, who have formal behaviors. The authors found that “In summary, when it comes to language composition, parsing approaches are either too limited (LR parsing), allow ambiguity (generalized parsing), or are hard to reason about (PEG parsing).”</p>
+<p>Solution? Don’t try to parse texts. Instead, edit the syntax tree. This is a technology called syntax directed editing, that author said he found a brief article about it in the last page of a grammar book with remark “this doesn’t work.” Syntax directed editing has been field-tested in 70s and 80s, but programmers preferred their favorite text editors over GUI-based tree editors based on syntax directed editing.</p>
+<p>What is so innovative about Eco’s approach is their effort to make the syntax-directed editor look and feel much like usual text editor. Looking at their editor, Eco, indeed I thought it was a text editor. Behind the curtains, however, Eco holds an abstract syntax tree; the cursor is at a certain element of the syntax tree. The structure is saved as a tree, loaded as a tree — it remains a tree all the time. Bad news is that we never get to use our favorite editor such as vi and emacs; Good news is that we now get to edit the fused syntax tree of multiple programming languages.</p>
+<p>What you get in the end is a fused tree, and what it means is open to user interpretation. There are vast possibilities.</p>
+<p>I saw several demo cases. In a HTML+SQL+Python demo, the tree was interpreted as python program that queries an SQL database and prints out HTML. More interesting were Python+Prolog and PHP+Python demo. In the latter demo, PHP component can access Python variable by their name, and vice versa.</p>
+<h1 id="how-it-interprets">How it interprets</h1>
+<p>Once you get a syntax tree with fused PHP+Python, the next question is how to interpret it. Their solution is elaborated from around page 28 of <a href="http://soft-dev.org/talks/2014/splash.pdf">the slides</a>. How would you fuse PHP interpreter with Python interpreter? They made several attempts.</p>
+<p>First, you can take already-existing interpreters and write some C/C++ interface that interfaces the two interpreters. The interface will convert PHP objects to Python’s and vice versa. Sadly, the overhead is too large, execution is too slow to be useful.</p>
+<p>Second, if the interpreters are slow, what if we JIT optimize them? Sadly again, Working on JIT for all languages you want to fuse is too much work, and also you don’t solve the interface overhead problem by per-language JIT.</p>
+<p>Third, can we take a virtual machine such as JVM, that already has sophisticated JIT in it? This approach doesn’t work well, too. The kind of optimization we are looking for is in interpreter layor semantics. For example, looking-up for binding table is very costly operation. We’d like to replace multiple lookups for variable <code>x</code> with single lookup if we know that the value of <code>x</code> doesn’t change in the course. JVM is a stack-machine. The behavior of the original interpreters become too fine-grained when compiled to JVM bitecode and JVM JIT is not good at spotting such optimizations that require knowledge of the interpreter semantics.</p>
+<p>So what’s their solution? Their solution is <em>Tracing JIT</em> . Tracing JIT is strong in application; it can be applied to any interpreter once the tracing is available.</p>
+<p>Tracing JIT works as follows. First, they insert checkpoints to the progarm, and then let the program running for a while. Eventually we can tell the hotspots of the program by most frequently passed checkpoints. Once the hotspots are detected, on the next entry to a hotspot, the JIT mechanism takes the trace of the program execution, taking record of what preconditions met and what instructions run. The JIT compiler takes the trace as a program, optimizes and compiles it to a native code. After that, the native code is used whenever the preconditions are met.</p>
+<p>With the Python glue and the tracing JIT, any programming languages can be fused. You can write programs with the interleaved languages as if it is a composed language, enjoying the merit of both language, without the foreign function interface overhead.</p>
+<p>Provided that all language has Python backend! PHP, Prolog and Python all have Python implementation. Unfortunately, Haskell, my favorite language, doesn’t.</p>
+<h1 id="conclusions">Conclusions</h1>
+<p>Another thing struck me in SPLASH’14 was the Python code rewriting its own syntax tree using decorators. In summary, my SPLASH’14 experience is full of joy; there are lots of exciting researches — lot more than I have expected — going on in the field of dynamic languages.</p>
+
+        </div>
+        <div id="footer">
+            Feedbacks and criticisms are always welcome as they leads to growth; <a href="https://github.com/nushio3/nushio3.github.io/issues">submit</a><p>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </div>
+    </body>
+</html>
