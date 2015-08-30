@@ -11,6 +11,7 @@ Articles
 T Muranushi, J Makino
 Procedia Computer Science 51, 1303-1312
 		(2015)
+    [pdf](publications/PiTCH-extended.pdf)
 
 - Nanoblock Unroll: Towards the Automatic Generation of Stencil Codes with the Optimal Performance
 T Muranushi, K Nitadori, J Makino
