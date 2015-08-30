@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{natbib}
+
+% c.f. http://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib?lq=1
+
+% create custom bst by
+%  latex `kpsewhich makebst.tex`
+
+
+\title{Publications 2}
+\author{Takayuki Muranushi}
+
+\begin{document}
+
+\maketitle
+
+\nocite{*}
+
+\bibliographystyle{custom2}
+\bibliography{publications}
+
+
+\end{document}

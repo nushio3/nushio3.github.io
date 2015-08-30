@@ -1,0 +1,112 @@
+\begin{thebibliography}{13}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\bibAnnoteFile}[1]{%
+  \IfFileExists{#1}{\begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ \input{#1}\end{quotation}}{}}
+\providecommand{\bibAnnote}[2]{%
+  \begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ #2\end{quotation}}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{Muranushi and Makino(2015)}]{muranushi2015optimal}
+Takayuki Muranushi and Junichiro Makino, \emph{Optimal temporal blocking for
+  stencil computation}.
+\newblock Procedia Computer Science, volume~51:(2015) pp. 1303--1312.
+\bibAnnoteFile{muranushi2015optimal}
+
+\bibitem[{Hada et~al.(2014)Hada, Muranushi, Shibayama, Isobe, Nemoto, and
+  Shibata}]{hada2014development}
+Yuko Hada, Takayuki Muranushi, Takuya Shibayama, Hiroaki Isobe, Shigeru Nemoto,
+  and Kazunari Shibata (2014).
+\newblock \emph{Development of space weather prediction algorithm using big
+  data analysis}.
+\newblock In \emph{Japan Geoscience Union Meeting 2014}.
+\bibAnnoteFile{hada2014development}
+
+\bibitem[{Muranushi and Eisenberg(2014)}]{muranushi2014experience}
+Takayuki Muranushi and Richard~A Eisenberg (2014).
+\newblock \emph{Experience report: Type-checking polymorphic units for
+  astrophysics research in haskell}.
+\newblock In \emph{2014 ACM SIGPLAN Symposium on Haskell}. ACM.
+\bibAnnoteFile{muranushi2014experience}
+
+\bibitem[{Muranushi et~al.(2014)Muranushi, Nitadori, and
+  Makino}]{muranushi2014nanoblock}
+Takayuki Muranushi, Keigo Nitadori, and Junichiro Makino (2014).
+\newblock \emph{Nanoblock unroll: Towards the automatic generation of stencil
+  codes with the optimal performance}.
+\newblock In \emph{Proceedings of the Second Workshop on Optimizing Stencil
+  Computations}, pp. 49--55. ACM.
+\bibAnnoteFile{muranushi2014nanoblock}
+
+\bibitem[{Okabe and Muranushi(2014)}]{okabe2014systems}
+Kiwamu Okabe and Takayuki Muranushi (2014).
+\newblock \emph{Systems demonstration: Writing netbsd sound drivers in
+  haskell}.
+\newblock In \emph{Haskell Symposium, collocated with International Conference
+  on Functional Programming}.
+\bibAnnoteFile{okabe2014systems}
+
+\bibitem[{Hotokezaka et~al.(2013)Hotokezaka, Kiuchi, Kyutoku, Muranushi,
+  Sekiguchi, Shibata, and Taniguchi}]{hotokezaka2013remnant}
+Kenta Hotokezaka, Kenta Kiuchi, Koutarou Kyutoku, Takayuki Muranushi, Yu-ichiro
+  Sekiguchi, Masaru Shibata, and Keisuke Taniguchi, \emph{Remnant massive
+  neutron stars of binary neutron star mergers: Evolution process and
+  gravitational waveform}.
+\newblock Physical Review D, volume~88(4):(2013) p. 044026.
+\bibAnnoteFile{hotokezaka2013remnant}
+
+\bibitem[{Muranushi(2013)}]{muranushi2013lightning}
+Takayuki Muranushi (2013).
+\newblock \emph{Lightning in Protoplanetary Disks}.
+\newblock Ph.D. thesis, Kyoto University.
+\bibAnnoteFile{muranushi2013lightning}
+
+\bibitem[{Farr et~al.(2012)Farr, Ames, Hut, Makino, McMillan, Muranushi,
+  Nakamura, Nitadori, and Zwart}]{farr2012psdf}
+Will~M Farr, Jeff Ames, Piet Hut, Junichiro Makino, Steve McMillan, Takayuki
+  Muranushi, Koichi Nakamura, Keigo Nitadori, and Simon~Portegies Zwart,
+  \emph{Psdf: Particle stream data format for n-body simulations}.
+\newblock New Astronomy, volume~17(5):(2012) pp. 520--523.
+\bibAnnoteFile{farr2012psdf}
+
+\bibitem[{Muranushi(2012)}]{muranushi2012paraiso}
+Takayuki Muranushi, \emph{Paraiso: an automated tuning framework for explicit
+  solvers of partial differential equations}.
+\newblock Computational Science \& Discovery, volume~5(1):(2012) p. 015003.
+\newblock \urlprefix\url{http://arxiv.org/abs/1204.4779}.
+\bibAnnoteFile{muranushi2012paraiso}
+
+\bibitem[{Muranushi et~al.(2012)Muranushi, Okuzumi, and
+  Inutsuka}]{muranushi2012interdependence}
+Takayuki Muranushi, Satoshi Okuzumi, and Shu-ichiro Inutsuka,
+  \emph{Interdependence of electric discharge and magnetorotational instability
+  in protoplanetary disks}.
+\newblock The Astrophysical Journal, volume 760(1):(2012) p.~56.
+\bibAnnoteFile{muranushi2012interdependence}
+
+\bibitem[{Muranushi(2010)}]{muranushi2010dust}
+Takayuki Muranushi, \emph{Dust--dust collisional charging and lightning in
+  protoplanetary discs}.
+\newblock Monthly Notices of the Royal Astronomical Society, volume
+  401(4):(2010) pp. 2641--2664.
+\bibAnnoteFile{muranushi2010dust}
+
+\bibitem[{Muranushi and Tomiyasu(2009)}]{muranushi2009proto}
+T~Muranushi and T~Tomiyasu (2009).
+\newblock \emph{Proto-planetary nebulae struck by lightning? a charge
+  separation study of ice dust grains and its effect on dust growth}.
+\newblock In \emph{Exoplanets and Disks: Their Formation and Diversity:
+  Proceedings of the International Conference}, volume 1158, pp. 145--146. AIP
+  Publishing.
+\bibAnnoteFile{muranushi2009proto}
+
+\bibitem[{Muranushi and Inutsuka(2009)}]{muranushi2009direct}
+Takayuki Muranushi and Shu-ichiro Inutsuka, \emph{Direct simulations of
+  particle acceleration in a fluctuating electromagnetic field across a shock}.
+\newblock The Astrophysical Journal Letters, volume 691(1):(2009) p. L24.
+\bibAnnoteFile{muranushi2009direct}
+
+\end{thebibliography}

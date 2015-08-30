@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2012/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: publications.aux
+The style file: custom2.bst
+Database file #1: publications.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--can't use both volume and number fields in muranushi2009proto
+You've used 13 entries,
+            3179 wiz_defined-function locations,
+            1166 strings with 15290 characters,
+and the built_in function-call counts, 9783 in all, are:
+= -- 665
+> -- 374
+< -- 25
++ -- 136
+- -- 228
+* -- 814
+:= -- 1105
+add.period$ -- 36
+call.type$ -- 13
+change.case$ -- 89
+chr.to.int$ -- 118
+cite$ -- 53
+duplicate$ -- 760
+empty$ -- 743
+format.name$ -- 166
+if$ -- 1897
+int.to.chr$ -- 105
+int.to.str$ -- 1
+missing$ -- 159
+newline$ -- 85
+num.names$ -- 52
+pop$ -- 336
+preamble$ -- 1
+purify$ -- 67
+quote$ -- 0
+skip$ -- 377
+stack$ -- 0
+substring$ -- 396
+swap$ -- 561
+text.length$ -- 17
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 158
+warning$ -- 1
+while$ -- 62
+width$ -- 0
+write$ -- 183
+(There was 1 warning)
