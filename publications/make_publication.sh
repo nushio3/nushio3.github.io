@@ -1,4 +1,9 @@
 mkdir -p dist
-htlatex publications.tex '' '' -ddist/
-bibtex publications
-htlatex publications.tex '' '' -ddist/
+cp publications.tex publications.bib *.bst *.sty dist/
+cd dist
+htlatex publications.tex '' ''
+for auxfile in $( ls bu*.aux ); do
+    echo bibtex $auxfile
+    bibtex $auxfile
+done
+#htlatex publications.tex '' ''

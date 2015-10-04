@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{bibunits}
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{natbib}
@@ -9,17 +10,20 @@
 %  latex `kpsewhich makebst.tex`
 
 
-\title{Publications 2}
+\title{Publications}
 \author{Takayuki Muranushi}
 
 \begin{document}
 
 \maketitle
 
-\nocite{*}
+\begin{bibunit}[custom2]
+  This is all I have written so far.
 
-\bibliographystyle{custom2}
-\bibliography{publications}
+  \nocite{*}
 
+  \renewcommand\refname{Peer-reviewed Publications}
+  \putbib[publications]
+\end{bibunit}
 
 \end{document}
