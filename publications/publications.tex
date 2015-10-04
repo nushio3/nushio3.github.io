@@ -18,12 +18,18 @@
 \maketitle
 
 \begin{bibunit}[custom2]
-  This is all I have written so far.
+  \nocite{*}
+  \renewcommand\refname{Peer-reviewed Publications}
+  \putbib[books]
+\end{bibunit}
 
+
+\begin{bibunit}[custom2]
   \nocite{*}
 
   \renewcommand\refname{Peer-reviewed Publications}
   \putbib[publications]
 \end{bibunit}
+
 
 \end{document}
