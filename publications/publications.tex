@@ -1,25 +1,34 @@
-\documentclass{article}
+\documentclass[utf8]{article}
 \usepackage{bibunits}
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{natbib}
+%\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{CJKutf8}
+%\usepackage[english,japanese]{babel}
 
 % c.f. http://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib?lq=1
 
 % create custom bst by
 %  latex `kpsewhich makebst.tex`
+%\usepackage[jppp]{tex4ht}
 
 
 \title{Publications}
 \author{Takayuki Muranushi}
 
 \begin{document}
+\begin{CJK}{UTF8}{min}
 
 \maketitle
 
 \begin{bibunit}[custom2]
   \nocite{*}
-  \renewcommand\refname{Peer-reviewed Publications}
+
+  Japs 本文で日本語 Japanese
+
+  \renewcommand\refname{Books}
   \putbib[books]
 \end{bibunit}
 
@@ -31,5 +40,5 @@
   \putbib[publications]
 \end{bibunit}
 
-
+\end{CJK}
 \end{document}
